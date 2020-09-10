@@ -1,0 +1,14 @@
+avg degree:12.81(edges_num*2/node_num）
+top10 biggest nodes by degree:[('118', 139), ('261', 118), ('255', 101), ('182', 94), ('152', 94), ('230', 87), ('166', 85), ('67', 78), ('112', 70), ('201', 68)]
+
+avg path length:2.7381247042550867(assume adjacent distances are all 1)
+avg path length:1849.7179(with distance amplified 9000 times, miles not kilometers; note that the east-west direct distance in the US is about 2500 miles)
+diameter:6(assume adjacent distances are all 1)
+diameter:7867.5990(with distance amplified 9000 times)
+if consider distance, the farthest two are node 68(1 is beginning) and 330, which belongs to 帕劳(在西太平洋，当时由美国托管) and 缅因州（美国东北角）
+if not consider distance, the farthest two are node 9(1 is beginning) and 332，which belongs to Alaska and an western island near Philippines！！！
+
+global clustering coeff:0.6252172491625031
+
+max_coreness:26
+top35 biggest nodes by coreness:['67', '112', '118', '201', '248', '166', '94', '109', '131', '147', '150', '152', '172', '176', '177', '182', '219', '230', '232', '255', '258', '261', '293', '311', '146', '159', '162', '167', '174', '179', '217', '292', '299', '301', '310']
