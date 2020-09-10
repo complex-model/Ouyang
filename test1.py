@@ -83,32 +83,33 @@ def floyd_easy(W):
                 D[i][j] = min(D[i][j], D[i][k]+D[k][j])
     return D
 
-
-def get_avg_path_length(adjacent):
-    # 计算出avg_(shortest)_path_length以及网络直径
-    # adjacent可以是不考虑距离，也可以是考虑距离的
-    path_length = 0
-    D = floyd_easy(adjacent)
-    diameter = np.amax(np.array(D))
+def get_avg_path_length(adjacent,index=False):
+    #计算出avg_(shortest)_path_length以及网络直径
+    #adjacent可以是不考虑距离，也可以是考虑距离的
+    path_length=0
+    D=floyd_easy(adjacent)
+    diameter=np.amax(np.array(D))
     for i in range(332):
-        for j in range(i+1, 332):
-            path_length += D[i][j]
-    avg_path_length = 2*float(path_length)/(332*(332-1))
-    return diameter, avg_path_length
+        for j in range(i+1,332):
+            path_length+=D[i][j]
+    avg_path_length=2*float(path_length)/(332*(332-1))
+    if index==False:
+        return diameter,avg_path_length
+    else:
+        return np.unravel_index(np.array(D).argmax(), np.array(D).shape)
 
-
-def draw_degree(inp, topk, draw_distribution=True):
-    # 当第三个参数为真的时候，画分布图；否则按顺序画每个节点度的柱状图
-    y = np.array(inp)
-    if draw_distribution:
-        x = np.array([i for i in range(0, len(inp))])
-        plt.title("Degree Distribution")
-        plt.xlabel("Degree")
-        plt.ylabel("Node Number")
-
-        plt.bar(x, y)
-        for xx, yy in zip(x, y):
-            plt.text(xx, yy+1, str(yy), ha='center', va='bottom', fontsize=15)
+def draw_degree(inp,topk,draw_distribution=True):
+    #当第二个参数为真的时候，画分布图；否则按顺序画每个节点度的柱状图
+    y=np.array(inp)
+    if draw_distribution==True:
+        x=np.array([i for i in range(0,len(inp))])
+        plt.title("Degree Distribution") 
+        plt.xlabel("Degree") 
+        plt.ylabel("Node Number") 
+        
+        plt.bar(x,y)
+        for xx,yy in zip(x,y):
+            plt.text(xx,yy+1,str(yy),ha='center',va='bottom',fontsize=15)
             break
         plt.savefig('Degree_Distribution_Bar.png')
         plt.show()
@@ -157,19 +158,29 @@ def clustering_coeff(adjacent):
 def draw_cluster():
     pass
 
-
-def get_node_name_distance(filename):
-    # 带距离的邻接矩阵
-    with open(filename) as f:
-        useful_line = []
-        lines = f.readlines()
-        for index, line in enumerate(lines):
-            line = line.split('"')
-            for ind, element in enumerate(line):
-                line[ind] = element.strip()
-            useful_line.append([line[0], line[1]])
-            tmp = line[2].split()
+def get_node_name_distance(filename,rate=9000):
+#带距离的邻接矩阵
+#rate代表距离要乘的系数，考虑到小数距离太小；英里为单位
+    D=[[math.inf for i in range(332)] for j in range(332)]
+    with open (filename) as f:
+        useful_line=[]
+        lines=f.readlines()
+        for index,line in enumerate(lines):
+            line=line.split('"')
+            for ind,element in enumerate(line):
+                line[ind]=element.strip()
+            useful_line.append([line[0],line[1]])
+            tmp=line[2].split()
             useful_line[index].extend(tmp)
+        for i in range(332):
+            for j in range(i,332):
+                if i==j:
+                    D[i][j]=float(0.0)
+                else:
+                    D[i][j]=rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(float(useful_line[i][3])-float(useful_line[j][3]))**2)
+                    D[j][i]=rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(float(useful_line[i][3])-float(useful_line[j][3]))**2)
+
+    return useful_line,D
 
 # get_node_name_distance('node_info.txt')
 
