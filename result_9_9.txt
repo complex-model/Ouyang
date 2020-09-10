@@ -1,5 +1,0 @@
-avg degree:12.81(edges_num*2/node_num）
-top10 biggest nodes:[('118', 139), ('261', 118), ('255', 101), ('182', 94), ('152', 94), ('230', 87), ('166', 85), ('67', 78), ('112', 70), ('201', 68)]
-avg path length:2.7381247042550867(assume adjacent distances are all 1)
-diameter:6(assume adjacent distances are all 1)
-global clustering coeff:0.6252172491625031
