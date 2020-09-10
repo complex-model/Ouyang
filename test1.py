@@ -3,9 +3,8 @@ import numpy as np
 from matplotlib import pyplot as plt 
 
 def read_file(filename,normalize_freq=True):
-    #读出node-edge，并存储在邻接矩阵中。该邻接矩阵先不考虑边的权值（即机场距离）；0代表自己与自己，math.inf代表不邻接
+    #读出node-edge，并存储在邻接矩阵中；该邻接矩阵先不考虑边的权值（即机场距离）；0代表自己与自己，math.inf代表不邻接
     #注意，文件中节点编号从1开始
-    #adjacent=[[0 for i in range(332)] for j in range(332)]
     adjacent=[[math.inf for i in range(332)] for j in range(332)]
     freq=[[0 for i in range(332)] for j in range(332)]
     freq_normalized=[]
@@ -30,9 +29,10 @@ def read_file(filename,normalize_freq=True):
     return adjacent,freq,freq_normalized
 
 def get_degree(adjacent,topk=10):
-    #算出每个节点的度数并画出柱状图；算出最大度和最小度，并画出度的分布图；画图的函数定义为draw_degree()。
-    #topk代表选出topk个度数最大的点，获取其编号和度数,储存在topk_biggest_degree_nodes；one_degree_nodes看一看有多少个节点度数为1.
-    #返回类型为字典的时候，字典的键为节点编号，从1开始！！！！！返回类型为列表时，下标从0开始。
+    #算出每个节点的度数并画出柱状图；算出最大度和最小度，并画出度的分布图；画图的函数定义为draw_degree()
+    #topk代表选出topk个度数最大的点，获取其编号和度数,储存在topk_biggest_degree_nodes；one_degree_nodes看一看有多少个节点度数为1
+    #返回类型为字典的时候，字典的键为节点编号，从1开始！！！！！返回类型为列表时，下标从0开始
+    #注意使用map函数！！！！！
     degree_dict={}
     one_degree_nodes=[]
     for ind,node in enumerate(adjacent):
@@ -75,7 +75,7 @@ def floyd_easy(W):
 
 def get_avg_path_length(adjacent):
     #计算出avg_(shortest)_path_length以及网络直径
-    #adjacent可以是不考虑距离，也可以是考虑距离的。
+    #adjacent可以是不考虑距离，也可以是考虑距离的
     path_length=0
     D=floyd_easy(adjacent)
     diameter=np.amax(np.array(D))
@@ -86,7 +86,7 @@ def get_avg_path_length(adjacent):
     return diameter,avg_path_length
 
 def draw_degree(inp,topk,draw_distribution=True):
-    #画图。当第二个参数为真的时候，画分布图。否则按顺序画每个节点度的柱状图。
+    #当第二个参数为真的时候，画分布图；否则按顺序画每个节点度的柱状图
     y=np.array(inp)
     if draw_distribution==True:
         x=np.array([i for i in range(0,len(inp))])
@@ -125,7 +125,6 @@ def clustering_coeff(adjacent):
             for k in range(332):
                 if adjacent[i][j]==1 and adjacent[i][k]==1 and i!=j and i!=k and j!=k:
                     triangle+=1
-                #if adjacent[i][j]==1 and adjacent[i][k]==1 and adjacent[j][k]==1 and i!=j and i!=k and j!=k:
                     if adjacent[j][k]==1:
                         triangle_complete+=1
         if triangle==0:
@@ -148,33 +147,24 @@ def clustering_coeff(adjacent):
 def draw_cluster():
     pass
 
-def map_coreness(x):
-    #计算coreness使用的map函数
-    return str(x).count('1')
-
-def coreness(adjacent):
-    k=2
-    coreness_res=[]
-    while k>=2:
-        pass
-
 def get_node_name_distance(filename):
+#带距离的邻接矩阵
     with open (filename) as f:
+        useful_line=[]
         lines=f.readlines()
-        for line in lines:
-            line=line.split()
-            print(line)
-            #TBC
+        for index,line in enumerate(lines):
+            line=line.split('"')
+            for ind,element in enumerate(line):
+                line[ind]=element.strip()
+            useful_line.append([line[0],line[1]])
+            tmp=line[2].split()
+            useful_line[index].extend(tmp)
+
 
 adj,freq,fn=read_file('inf-USAir97.mtx')
 #d,p=get_avg_path_length(adj)
-degree_result=get_degree(adj)
-print(degree_result[1])
+#degree_result=get_degree(adj)
 #draw_degree(degree_result[3],degree_result[1],False)
 #cluster_result=clustering_coeff(adj)
-#get_node_name_distance('node_info.txt')
 
-
-
-
-
+get_node_name_distance('node_info.txt')
