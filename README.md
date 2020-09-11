@@ -19,3 +19,5 @@ Here are some statistics that we have discovered in the USAir97 Dataset which co
    top35 biggest nodes by coreness:['67', '112', '118', '201', '248', '166', '94', '109', '131', '147', '150', '152', '172', '176', '177', '182', '219', '230', '232', '255', '258', '261', '293', '311', '146', '159', '162', '167', '174', '179', '217', '292', '299', '301', '310']
 
 7. assortativity is -0.20787623081200443, indicating big node connects small node
+
+8. https://www.zhihu.com/question/68093386 tips about visualization tools.
