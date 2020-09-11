@@ -124,7 +124,29 @@ def draw_degree(inp,topk,draw_distribution=True):
         plt.savefig('../results/Degree_Each_Node.png')
         plt.show()
 
+def fitting_func(x,r,b):
+    return r*x+b
 
+def draw_degree_with_curve_fitting(inp):
+    #模拟power_law定律
+    new_inp=[]
+    for element in inp:
+        if element>=1:
+            new_inp.append(element)
+    y=np.array(new_inp)
+    y=np.log(y)
+    x=np.array([i for i in range(1,len(new_inp)+1)])
+    x=np.log(x)
+    plt.title("Power Law Degree Distribution") 
+    plt.xlabel("Logged-Degree") 
+    plt.ylabel("Logged-Nodes Of This Degree")
+    plt.scatter(x,y)
+    popt,pcov=curve_fit(fitting_func, x, y,maxfev=1000000)
+    yy=[fitting_func(i,popt[0],popt[1]) for i in x]
+    plt.plot(x, yy, 'r-', label='fit')
+    print('coeff r= ',popt[0],' coeff b= ',popt[1])
+    plt.show()
+        
 def clustering_coeff(adjacent):
     cluster_coeff_each = []
     for i in range(332):
