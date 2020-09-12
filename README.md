@@ -21,3 +21,8 @@ Here are some statistics that we have discovered in the USAir97 Dataset which co
 7. assortativity is -0.20787623081200443, indicating big node connects small node
 
 8. https://www.zhihu.com/question/68093386 tips about visualization tools.
+
+9. I tried to calculate NODE_BETWEENNESS myself using BFS to track possible shortest path, it could work out on small graphs, but it failed in our 332-node graph. 
+So I switched to use the networkx package, so 'fragrant'! The largest 15 node-betweenness is: [(118, 0.20731993223098968), (8, 0.16948031947190978), (261, 0.15241740407914336), (201, 0.09384593454509225), (47, 0.09241355545314715), (182, 0.08104336166564649), (255, 0.07085473163772363), (152, 0.06916485349203222), (13, 0.06509811101956116), (67, 0.06479638197389133), (313, 0.06215761735790646), (230, 0.05421400126936584), (144, 0.048700235274616095), (166, 0.04537799052973221), (65, 0.04354882086075502)]. Also I calculated edge-betweenness. Edge-betweenness can be used to split 'communities'---See 'Girvan Newman' Algorithm. The code file is called 'betweenness.py' and I saved two dictionary-files 'node/edge_betweenness.npy'.
+   
+10. A simple metrics to evaluate similarity between two nodes is to calculate their same neighbors. So I simply implemented 'jaccard_similarity.py'. Then I saved the 'jaccard_similarity_dict.npy'.
