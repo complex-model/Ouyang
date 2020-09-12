@@ -76,39 +76,42 @@ def get_degree(adjacent, topk=10):
 def floyd_easy(W):
     # 计算全成对最短距离
     n = len(W)
-    D = W
+    D = W[:]
     for k in range(n):
         for i in range(n):
             for j in range(n):
                 D[i][j] = min(D[i][j], D[i][k]+D[k][j])
     return D
 
-def get_avg_path_length(adjacent,index=False):
-    #计算出avg_(shortest)_path_length以及网络直径
-    #adjacent可以是不考虑距离，也可以是考虑距离的
-    path_length=0
-    D=floyd_easy(adjacent)
-    diameter=np.amax(np.array(D))
-    for i in range(332):
-        for j in range(i+1,332):
-            path_length+=D[i][j]
-    avg_path_length=2*float(path_length)/(332*(332-1))
-    if index==False:
-        return diameter,avg_path_length
+
+def get_avg_path_length(adjacent, index=False):
+    # 计算出avg_(shortest)_path_length以及网络直径
+    # adjacent可以是不考虑距离，也可以是考虑距离的
+    path_length = 0
+    D = floyd_easy(adjacent)
+    diameter = np.amax(np.array(D))
+    n = len(adjacent)
+    for i in range(n):
+        for j in range(i+1, n):
+            path_length += D[i][j]
+    avg_path_length = 2*float(path_length)/(n*(n-1)) if n > 1 else 0
+    if index == False:
+        return diameter, avg_path_length
     else:
         return np.unravel_index(np.array(D).argmax(), np.array(D).shape)
 
-def draw_degree(inp,topk,draw_distribution=True):
-    #当第三个参数为真的时候，画分布图；否则按顺序画每个节点度的柱状图
-    y=np.array(inp)
+
+def draw_degree(inp, topk, draw_distribution=True):
+    # 当第三个参数为真的时候，画分布图；否则按顺序画每个节点度的柱状图
+    y = np.array(inp)
     if draw_distribution:
-        x=np.array([i for i in range(0,len(inp))])
-        plt.title("Degree Distribution") 
-        plt.xlabel("Degree") 
-        plt.ylabel("Node Number") 
-        plt.bar(x,y)
-        for xx,yy in zip(x,y):
-            plt.text(xx,yy+1,str(yy),ha='center',va='bottom',fontsize=15)
+        x = np.array([i for i in range(0, len(inp))])
+        plt.title("Degree Distribution")
+        plt.xlabel("Degree")
+        plt.ylabel("Node Number")
+        plt.bar(x, y)
+        for xx, yy in zip(x, y):
+            plt.text(xx, yy+1, str(yy), ha='center', va='bottom', fontsize=15)
             break
         plt.savefig('../results/Degree_Distribution.png')
         plt.show()
@@ -124,29 +127,29 @@ def draw_degree(inp,topk,draw_distribution=True):
         plt.savefig('../results/Degree_Each_Node.png')
         plt.show()
 
-def fitting_func(x,r,b):
+
+def fitting_func(x, r, b):
     return r*x+b
 
+
 def draw_degree_with_curve_fitting(inp):
-    #模拟power_law定律
-    new_inp=[]
-    for element in inp:
-        if element>=1:
-            new_inp.append(element)
-    y=np.array(new_inp)
-    y=np.log(y)
-    x=np.array([i for i in range(1,len(new_inp)+1)])
-    x=np.log(x)
-    plt.title("Power Law Degree Distribution") 
-    plt.xlabel("Logged-Degree") 
+    # 模拟power_law定律
+    new_inp = [element for element in inp if element >= 1]
+    y = np.array(new_inp)
+    y = np.log(y)
+    x = np.array([i for i in range(1, len(new_inp)+1)])
+    x = np.log(x)
+    plt.title("Power Law Degree Distribution")
+    plt.xlabel("Logged-Degree")
     plt.ylabel("Logged-Nodes Of This Degree")
-    plt.scatter(x,y)
-    popt,pcov=curve_fit(fitting_func, x, y,maxfev=1000000)
-    yy=[fitting_func(i,popt[0],popt[1]) for i in x]
+    plt.scatter(x, y)
+    popt, pcov = curve_fit(fitting_func, x, y, maxfev=1000000)
+    yy = [fitting_func(i, popt[0], popt[1]) for i in x]
     plt.plot(x, yy, 'r-', label='fit')
-    print('coeff r= ',popt[0],' coeff b= ',popt[1])
+    print('coeff r= ', popt[0], ' coeff b= ', popt[1])
     plt.show()
-        
+
+
 def clustering_coeff(adjacent):
     cluster_coeff_each = []
     for i in range(332):
@@ -179,29 +182,32 @@ def clustering_coeff(adjacent):
 def draw_cluster():
     pass
 
-def get_node_name_distance(filename,rate=9000):
-#带距离的邻接矩阵
-#rate代表距离要乘的系数，考虑到小数距离太小；英里为单位
-    D=[[math.inf for i in range(332)] for j in range(332)]
-    with open (filename) as f:
-        useful_line=[]
-        lines=f.readlines()
-        for index,line in enumerate(lines):
-            line=line.split('"')
-            for ind,element in enumerate(line):
-                line[ind]=element.strip()
-            useful_line.append([line[0],line[1]])
-            tmp=line[2].split()
+
+def get_node_name_distance(filename, rate=9000):
+    # 带距离的邻接矩阵
+    # rate代表距离要乘的系数，考虑到小数距离太小；英里为单位
+    D = [[math.inf for i in range(332)] for j in range(332)]
+    with open(filename) as f:
+        useful_line = []
+        lines = f.readlines()
+        for index, line in enumerate(lines):
+            line = line.split('"')
+            for ind, element in enumerate(line):
+                line[ind] = element.strip()
+            useful_line.append([line[0], line[1]])
+            tmp = line[2].split()
             useful_line[index].extend(tmp)
         for i in range(332):
-            for j in range(i,332):
-                if i==j:
-                    D[i][j]=float(0.0)
+            for j in range(i, 332):
+                if i == j:
+                    D[i][j] = float(0.0)
                 else:
-                    D[i][j]=rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(float(useful_line[i][3])-float(useful_line[j][3]))**2)
-                    D[j][i]=rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(float(useful_line[i][3])-float(useful_line[j][3]))**2)
+                    D[i][j] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
+                        float(useful_line[i][3])-float(useful_line[j][3]))**2)
+                    D[j][i] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
+                        float(useful_line[i][3])-float(useful_line[j][3]))**2)
 
-    return useful_line,D
+    return useful_line, D
 
 # get_node_name_distance('node_info.txt')
 
@@ -213,4 +219,4 @@ if __name__ == '__main__':
     diameter, avg_path_length = get_avg_path_length(adjacent)
     cluster_result = clustering_coeff(adjacent)
     degree_result = get_degree(adjacent)
-    draw_degree(degree_result[3],degree_result[1])
+    draw_degree(degree_result[3], degree_result[1])

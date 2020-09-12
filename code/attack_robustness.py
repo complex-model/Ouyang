@@ -36,20 +36,18 @@ def cal_largest_subgraph(matrix):
             id[i] = cnt
             dfs(matrix, visited, i, cnt, id)
             cnt += 1
-    print(f'连通子图的个数为 {cnt}, 各节点所属的子图编号为 {id}')
+    print(f'连通子图的个数为 {cnt}')
     number, size = Counter(id).most_common(1)[0]
     largest_subgraph = matrix[:]
-    for index, num in enumerate(id):
-        assert num != -1
-        if num != number:
-            # 删除该节点
-            largest_subgraph = np.delete(largest_subgraph, index, 0)
-            largest_subgraph = np.delete(largest_subgraph, index, 1)
+    remove_index = [index for index, num in enumerate(id) if num != number]
+    # 删除该节点
+    largest_subgraph = np.delete(largest_subgraph, remove_index, 0)
+    largest_subgraph = np.delete(largest_subgraph, remove_index, 1)
     print(f'size of largest subgraph: {size}')
     return largest_subgraph, size
 
 
-def random_attack(matrix):
+def attack(matrix, random_attack=True, node_skip=1):
     ''' 随机删除一些点
     :param matrix: 邻接矩阵
     :return: 每次删除节点后，图的鲁棒性
@@ -57,17 +55,31 @@ def random_attack(matrix):
     mat = matrix[:]
     removed_num, subgraph_size, subgraph_length = [], [], []
     num = 0
-    while len(mat) > 1:
-        i = random.randint(0, len(mat)-1)
-        mat = np.delete(mat, i, axis=0)
-        mat = np.delete(mat, i, axis=1)
-        num += 1
+    while len(mat) > node_skip:
+        remove_index = []
+        if random_attack:
+            remove_index = np.random.choice(range(len(mat)), node_skip)
+        else:
+            remove_index = get_max_degree_node(mat, top=node_skip)
+        mat = np.delete(mat, remove_index, axis=0)
+        mat = np.delete(mat, remove_index, axis=1)
+        num += node_skip
         removed_num.append(num)  # 记录删除节点的数目
         largest_subgraph, size = cal_largest_subgraph(mat)
         subgraph_size.append(size)  # 记录删除节点后，图的最大连通子图的 size
         _, avg_path_length = model_property.get_avg_path_length(largest_subgraph)
         subgraph_length.append(avg_path_length)  # 记录删除节点后，图的 average path length
     return removed_num, subgraph_size, subgraph_length
+
+
+def get_max_degree_node(matrix, top=1):
+    '''获取图中度最大的前 top 个点'''
+    degree = []
+    for mat in matrix:
+        degree.append(list(mat).count(1))
+    node_degree = {index: deg for index, deg in enumerate(degree)}
+    node_degree = sorted(node_degree.items(), key=lambda v: v[1], reverse=True)
+    return [index for index, value in node_degree[:top]]
 
 
 def draw(x, y, title, label, filename, color='blue'):
@@ -85,8 +97,11 @@ if __name__ == '__main__':
     root = '../data'
     filename = os.path.join(root, 'inf-USAir97.mtx')
     adjacent, freq, freq_normalized = model_property.read_file(filename)
-    # largest_subgraph, size = cal_largest_subgraph(adjacent)
     # 随机删除
-    removed_num, subgraph_size, subgraph_length = random_attack(adjacent)
-    draw(removed_num, subgraph_size, 'Random', ('node removed', 'Size of the largest subgraph'), '../results/Random_attack_Size.jpg')
-    draw(removed_num, subgraph_length, 'Random', ('node removed', 'Average path length'), '../results/Random_attack_Length.jpg')
+    # removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=True, node_skip=10)
+    # draw(removed_num, subgraph_size, 'Random', ('node removed', 'Size of the largest subgraph'), '../results/Random_attack_Size.jpg')
+    # draw(removed_num, subgraph_length, 'Random', ('node removed', 'Average path length'), '../results/Random_attack_Length.jpg')
+    # 选取度大的点删除
+    removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=False, node_skip=10)
+    draw(removed_num, subgraph_size, 'Intentional', ('node removed', 'Size of the largest subgraph'), '../results/Intentional_attack_Size.jpg')
+    draw(removed_num, subgraph_length, 'Intentional', ('node removed', 'Average path length'), '../results/Intentional_attack_Length.jpg')
