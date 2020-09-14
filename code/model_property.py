@@ -186,6 +186,7 @@ def draw_cluster():
 def get_node_name_distance(filename, rate=9000):
     # 带距离的邻接矩阵
     # rate代表距离要乘的系数，考虑到小数距离太小；英里为单位
+    A=np.load('adjacent_matrix_without_distance.npy',allow_pickle=True)
     D = [[math.inf for i in range(332)] for j in range(332)]
     with open(filename) as f:
         useful_line = []
@@ -202,10 +203,11 @@ def get_node_name_distance(filename, rate=9000):
                 if i == j:
                     D[i][j] = float(0.0)
                 else:
-                    D[i][j] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
-                        float(useful_line[i][3])-float(useful_line[j][3]))**2)
-                    D[j][i] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
-                        float(useful_line[i][3])-float(useful_line[j][3]))**2)
+                    if A[i][j]==1:
+                        D[i][j] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
+                            float(useful_line[i][3])-float(useful_line[j][3]))**2)
+                        D[j][i] = rate*sqrt((float(useful_line[i][2])-float(useful_line[j][2]))**2+(
+                            float(useful_line[i][3])-float(useful_line[j][3]))**2)
 
     return useful_line, D
 
@@ -216,6 +218,8 @@ if __name__ == '__main__':
     root = '../data'
     filename = os.path.join(root, 'inf-USAir97.mtx')
     adjacent, freq, freq_normalized = read_file(filename)
+    #np.save('adjacent_matrix_without_distance.npy',adjacent)
+    #np.save('freq_matrix_with_normalization.npy',freq)
     diameter, avg_path_length = get_avg_path_length(adjacent)
     cluster_result = clustering_coeff(adjacent)
     degree_result = get_degree(adjacent)
