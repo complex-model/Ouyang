@@ -9,9 +9,9 @@ Here are some statistics that we have discovered in the USAir97 Dataset which co
 3. if deliberately delete zero points in the list "degree distribution", then we get Power_Law_Omit_Zero.png, with coeff r=-1.1258094768710132  coeff b=4.394471543376857
 
 4. avg path length:2.7381247042550867(assume adjacent distances are all 1)
-   avg path length:1849.7179(with distance amplified 9000 times using 'miles' as the measurement; note that the east-west direct distance in the US is about 2500 miles)
+   avg path length:2032.9342(with distance amplified 9000 times using 'miles' as the measurement; note that the east-west direct distance in the US is about 2500 miles)
    diameter:6(assume adjacent distances are all 1)---the farthest two are node 9(1 is beginning) and 332，which belongs to Alaska and an western island near Philippines！！！
-   diameter:7867.5990(with distance amplified 9000 times)---the farthest two are node 68(1 is beginning) and 330, which belongs to 帕劳(在西太平洋，当时由美国托管) and 缅因州（美国东北角）
+   diameter:8661.0540(with distance amplified 9000 times)---the farthest two are node 37 and 330, which belongs to Alaska and Palau(An west Pacific island).
 
 5. global clustering coeff:0.6252172491625031. Currently there is not a distribution graph about (local) clustering coeff!!!
 
