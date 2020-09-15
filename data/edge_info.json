@@ -1,4 +1,4 @@
-[
+get_edge([
     {
         "source": 1,
         "target": 2,
@@ -25511,4 +25511,4 @@
         "name": "link4252",
         "description": "edge"
     }
-]
+])
