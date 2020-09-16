@@ -25,9 +25,9 @@
 	<script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-        myChart.showLoading();
+        // myChart.showLoading();
 	    var categories = [];
-	    for (var i = 0; i < 2; i++) {
+	    for (var i = 0; i < 14; i++) {
 	        categories[i] = {
 	            name: '类目' + i
 	        };
@@ -69,8 +69,8 @@
 	        }],
 	        series: [{
 	            type: 'graph', // 类型:关系图
-	            layout: 'circular', //图的布局，类型为力导图
-	            symbolSize: 10, // 调整节点的大小
+	            layout: 'force', //图的布局，类型为力导图
+	            symbolSize: 3, // 调整节点的大小
 	            roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
 	            /*edgeSymbol: ['circle', 'arrow'],*/
 	            /*edgeSymbolSize: [2, 10],*/

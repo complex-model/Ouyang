@@ -51,7 +51,7 @@ def generate_node(nodes_name, degree):
     for node_id, node_name in nodes_name.items():
         node_info = {}
         node_info['name'] = node_id
-        node_info['category'] = 0
+        node_info['category'] = node_classify[node_id]
         node_info['description'] = node_name
         node_info['value'] = degree[node_id-1]
         nodes_info.append(node_info)
@@ -75,11 +75,11 @@ def generate_edge(adjacent):
     return edges_info
 
 
-def save_as_json(information, filename):
+def save_as_json(information, filename, func):
     ''' 保存成 json 文件 '''
     json_str = json.dumps(information, ensure_ascii=False, indent=4)
     with open(filename, 'w') as f:
-        f.write(json_str)
+        f.write(func + '(' + json_str + ')')
 
 
 if __name__ == '__main__':
@@ -89,6 +89,13 @@ if __name__ == '__main__':
     edge_path = os.path.join(root, 'inf-USAir97.mtx')
     nodes_name = read_nodename(node_path)
     adjacent = read_edgeinfo(edge_path)
+    # 类别信息
+    partition = np.load('../results/community_partition.npy', allow_pickle=True)
+    print(f'partition: {len(partition)}')
+    node_classify = [0 for i in range(NODE_NUM+1)]
+    for index, parts in enumerate(partition):
+        for part in parts:
+            node_classify[part] = index
     # 计算信息
     degree = cal_degree(adjacent)
     nodes_info = generate_node(nodes_name, degree)
@@ -96,5 +103,5 @@ if __name__ == '__main__':
     # 保存 json 格式的文件
     node_json_path = os.path.join(root, 'node_info.json')
     edge_json_path = os.path.join(root, 'edge_info.json')
-    save_as_json(nodes_info, node_json_path)
-    save_as_json(edges_info, edge_json_path)
+    save_as_json(nodes_info, node_json_path, 'get_node')
+    save_as_json(edges_info, edge_json_path, 'get_edge')
