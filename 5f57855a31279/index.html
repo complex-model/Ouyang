@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>USAir97 Complex Network</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="icon.jpg" type="image/x-icon">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- style for this template -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- responsive style -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- preloader begin-->
+    <div class="preloader">
+        <div class="loader">
+            <hr><hr>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+    <!-- scroll to top -->
+    <div class="scroll-to-top">
+    </div>
+    <!-- scroll to top -->
+
+    <!-- header begin -->
+    <div class="header">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-9">
+                        <div class="top-left">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-envelope"></i>459014917@qq.com</a></li>
+                                <li><a href="#"><i class="fas fa-phone"></i>+88 18813913873</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="top-right">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-2 d-xl-flex d-lg-flex d-block align-items-center">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-7 d-xl-block d-lg-block d-flex align-items-center">
+                                <div class="logo">
+                                    <a href="#"><img src="assets/images/logo1.png" alt="LOGO"></a>
+                                </div>
+                            </div>
+                            <div class="d-xl-none d-lg-none d-block col-5">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-10">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#Description">Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Statistics">Statistics</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Robustness">Robustness</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Visualization">Visualization</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Analyses">Analyses</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#project">Prospect</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#contact">contact</a>
+                                    </li>
+                                    
+                                </ul>
+                                <!--<a href="#" class="my-btn">get started</a>-->
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
+ 
+    <!-- banner begin -->
+    <div class="banner" id="Description">
+        <div class="container">
+            <div class="col-xl-12 col-lg-12">
+                <div class="banner-txt">
+                    <h1>About Our Dataset</h1>
+                    <p>Our dataset, USAir97, is an undirected graph whose nodes and edges are airports and airlines respectively. It was collected in the US in 1997, with 332 nodes and 2126 edges. The names of the airports, distances and flight frequencies between two adjacent airports are also provided. Throught this dataset, we need to compute some network statistics, measure its robustness and give some basic analyses.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner end -->
+
+    <!-- about begin -->
+    <div class="about" id="Statistics">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="part-img">
+                        <img src="assets/images/airport1.png" alt="airport">
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-5 d-xl-flex d-lg-flex d-block align-items-center">
+                    <div class="part-txt">
+                        <div class="title">
+                            <h2>Basic Statistics</h2>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-external-link-alt"></i>Maximum Degree: 139</li>
+                            <li><i class="fas fa-external-link-alt"></i>Minimum Degree: 1</li>
+                            <li><i class="fas fa-external-link-alt"></i>Average Degree: 12.81</li>
+                            <li><i class="fas fa-external-link-alt"></i>Gloal Clustering Coeff: 0.625</li>
+                            <li><i class="fas fa-external-link-alt"></i>Assortativity: -0.208</li>
+                            <li><i class="fas fa-external-link-alt"></i>Maximum Coreness: 26</li>
+                            <li><i class="fas fa-external-link-alt"></i>Communities Using Louvain Algorithm: 14</li>
+                            <li><i class="fas fa-external-link-alt"></i>Diameter: 6</li>
+                            <li><i class="fas fa-external-link-alt"></i>Diameter With Distance: 8661</li>
+                            <li><i class="fas fa-external-link-alt"></i>Average Shortest Path Length: 2.74</li>
+                            <li><i class="fas fa-external-link-alt"></i>Average Shortest Path Length With Distance: 2033</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about end -->
+
+    <!-- service begin -->
+    <div class="service" id="Robustness">
+        <div class="container">
+            <div class="heading">
+                <h2>Robustness</h2>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="part-txt">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum minima, quam, ipsa ipsam quibusdam aliquid possimus qui impedit laboriosam, non facere. Ut magni sed commodi fugit at iusto. Maiores, eveniet.</p>
+                        <h6>Virtual Personal Assistants <span>50%</span></h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                        </div>
+                        <h6>Videos Surveillance <span>25%</span></h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                        </div>
+                        <h6>Social Media Services <span>75%</span></h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                        </div>
+                        <h6>Online Customer Support <span>100%</span></h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 d-xl-flex d-lg-flex d-block align-items-center">
+                    <div class="part-img">
+                        <img src="assets/images/service.png" alt="service">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- service end -->
+
+    <!-- how it's works begin -->
+    <div class="how-its" id="Visualization">
+        <div class="container">
+            <div class="heading">
+                <h2>Visualization</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="part-box after">
+                        <div class="part-img">
+                            <img src="assets/images/img-1.png" alt="how it's">
+                        </div>
+                        <div class="part-txt">
+                            <h3>data for all your people</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat autem sunt perspiciatis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="part-box after">
+                        <div class="part-img">
+                            <img src="assets/images/img-3.png" alt="how it's">
+                        </div>
+                        <div class="part-txt">
+                            <h3>a new breed of all</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat autem sunt perspiciatis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="part-box">
+                        <div class="part-img">
+                            <img src="assets/images/img-2.png" alt="how it's">
+                        </div>
+                        <div class="part-txt">
+                            <h3>analytics bussiness</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat autem sunt perspiciatis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- how it's works end -->
+
+    <!-- what we offer begin -->
+    <div class="offers" id="Analyses">
+        <div class="container">
+            <div class="heading">
+                <h2>analyses</h2>
+            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="analyst-tab" data-toggle="tab" href="#analyst" role="tab" aria-controls="analyst" aria-selected="true">
+                        <img src="assets/images/img-2.png" alt="img1">
+                        Degree Analysis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="optimization-tab" data-toggle="tab" href="#optimization" role="tab" aria-controls="optimization" aria-selected="false">
+                        <img src="assets/images/img-5.png" alt="img2">
+                        Betweenness Analysis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">
+                        <img src="assets/images/img-4.png" alt="img3">
+                        Distance & Assortativity
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="healthcare-tab" data-toggle="tab" href="#healthcare" role="tab" aria-controls="healthcare" aria-selected="false">
+                        <img src="assets/images/img-6.png" alt="img4">
+                        Frequency & Coreness
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="analyst" role="tabpanel" aria-labelledby="analyst-tab">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="part-txt">
+                                <h3>Investigate Top 20 Degree Nodes</h3>
+                                <p>They are distributed in states including Illinois, Texas, Georgia, Missouri, Pennsylvania, North Carolina, Colorado, Minnesota, Michigan, California, New Jersey, Kentucky, Arizona, Utah, Washington, Florida and Tennessee. Each state owns one big airport, except that Texas, Pennsylvania and California have two.
+                                    <br>
+                                    The Western, Middle, East area of the US owns 6, 6, 8 big airports respectively.
+                                </p>
+                                <h3>Investigate 1-Degree Nodes</h3>
+                                <p>55 Airports have degree one. 6 of them locate in Alaska, 6 of them in Texas (especially tourist resorts), 7 of them in California (especially tourist resorts). Specifically, 3 of them lie in US's overseas territories including Puerto Rico and western Pacific islands. The rest of them are roughly uniformly distributed in other states.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-6">
+                            <div class="part-txt">
+                                <h3>Examples</h3>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Chicago O’hare Intl, Illinois--Degree 139</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Dallas/Fort Worth Intl, Texas--Degree 118</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Hartsfield-Jackson Atlanta Intl, Georgia--Degree 101</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Lambert-St Louis Intl, Missouri--Degree 94</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Pittsburgh Intl, Pennsylvania--Degree 94</li>
+                                </ul>
+                                <br>
+                                
+                                <h3>Reflections and Conclusions</h3>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Texas and California are more prosperous</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Weather may influence the scale of Alaskan airports</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Development in different parts of the US is balanced</li>
+                                    <li><i class="fas fa-external-link-alt"></i>The layout of US Airports is reasonable</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="optimization" role="tabpanel" aria-labelledby="optimization-tab">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="part-txt">
+                                <h3>Node Betweenness</h3>
+                                <p>We seek top 20 nodes with biggest node betweenness. 15 of them are among the top 20 biggest degree list. To be specific, two airports with big node betweenness have small degree.</p>
+                                <p>One is the Guam Intl that is directly connected to four airports including Hawaii Islands, Saipan Islands, Rota Islands and Palau Islands, which are overseas territories as well as scenic spots of the US. </p>                                
+                                <p>The other is Bethel Airport with a degree 14, which is located in Alaska. All of its neighbors are in Alaska and almost all of them are low in degree (merely 1~4) except Anchorage Intl, which is in the biggest city of Alaska. Thus, Bethel Airport is an important hub in Alaskan airline transportation.</p>
+                                <p>Besides, 5 nodes that belong to the top 20 biggest degree list are not among the top 20 biggest node betweenness list. But they have a relatively high node betweenness, and they generally are at the end of the top 20 biggest degree list.</p>
+        
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5">
+                            <div class="part-txt">
+                                <h3>Edge Betweenness</h3>
+                                <p>We inspect top 20 edges with biggest edge betweenness. Among these edges, airports located in the overseas territories repeatedly occur. Here are some examples:</p>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Mercedita in Puerto Rico, degree 4, occurs 3 times</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Alexander H in Virgin Islands, degree 8, occurs 8 times</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Rota Intl in Rota Islands, degree 2,occurs 2 times</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Pago Pago in Samoa, degree 2, occurs 2 times</li>
+                                </ul>
+                                <br>
+                                <h3>Reflections and Conclusions</h3>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Higher degree usually leads to higher N-Betweenness</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Overseas small airports strongly influence</li><li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp E-Betweenness</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Some Alaskan and overseas airports may slightly</li><li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Influence N-Betweenness</li>
+                                </ul>
+                            </div> 
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="part-txt">
+                                <h3>The Farthest</h3>
+                                <p>We have to transfer at most 6 times from Tuluksak Airport in Alaska to West Tinian Airport in Western Pacific.</p>
+                                <p>We have to travel at most 8661 miles from Eareckson Air Station in Alaska to Babelthuap Airport in Palau, Western Pacific. That distance is 3.5 times the distance from western America to eastern America straight.</p>
+                                <h3>Distance VS Degree</h3>
+                                <p>Assume that those airports with degree <=5 are small ones while those with degree >=30 are big ones.We appoint them into three groups: big-big, small-small and big-small (omitting those 'ordinary' airports). If airports are not adjacent, we apply Floyd Algorithm to compute the shortest path. Then we can get the average distance of these 3 groups:</p>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Big: 1043 miles (&lt&ltASTL=2033) with 741 pairs</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Small-Small: 2525 miles with 15753 pairs</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Small: 1985 miles with 6942 pairs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5">
+                            <div class="part-txt">
+                                <h3>Assortativity</h3>
+                                <p>We have calculated that the assortativity is negative, indicating that big (degree) nodes tend to link to small (degree) nodes. Let's verify if it is true.</p>
+                                <p>In a nutshell, the probability that big nodes connect with big nodes is roughly 0.3~0.5. Here are some examples:</p>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Node 118, degree 139 with 38 to big nodes</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Node 261, degree 118 with 37 to big nodes</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Node 258, degree 60 with 30 to big nodes</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Node 248, degree 59 with 34 to big nodes</li>
+                                </ul>
+                                <br>
+                                <h3>Reflections and Conclusions</h3>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Big nodes tend to be close in distance</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Small-Small nodes tend to be far away, and</li><li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp have significant impact on ASPL.</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Assortativity is verified and is correct</li>
+                                    <li><i class="fas fa-external-link-alt"></i>The Network is not too rich-club nor too</li><li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp star-shaped, thus it is proper.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="healthcare" role="tabpanel" aria-labelledby="healthcare-tab">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="part-txt">
+                                <h3>Frequency VS Degree</h3>
+                                <p>We apply the same method as the "Distance VS Degree" with frequency normalized. We do not take non-adjacent airports into account. A few pairs of airports that are both in the top 20 highest degree list are non-adjacent, but only need 1 transfer. Here are the results of average frequency:</p>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Between top 20 highest degree nodes: 0.209</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Big: 0.195</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Small-Small: 0.032</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Small: 0.077</li>
+                                    <li><i class="fas fa-external-link-alt"></i>All: 0.134</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5">
+                            <div class="part-txt">
+                                <h3>Coreness</h3>
+                                <p>Those nodes in the top 20 biggest degree list have the highest coreness (26) except two (and these two have the relatively high coreness 22 and 24).</p>
+                                <br>
+                                <h3>Reflections and Conclusions</h3>
+                                <ul>
+                                    <li><i class="fas fa-external-link-alt"></i>Big-Big nodes tend to have a large number of flights</li>
+                                    <li><i class="fas fa-external-link-alt"></i>Small-Small nodes tend to have few flights: 0.195</li>
+                                    <li><i class="fas fa-external-link-alt"></i>The higher the degree, the higher the coreness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- what we offer end -->
+
+    <!-- portfolio begin -->
+    <div class="portfolio" id="project">
+        <div class="container">
+            <div class="heading">
+                <h2>Future Plans</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
+                    <div class="item">
+                        <div class="part-img">
+                            <img src="assets/images/project-1.jpg" alt="image-1">
+                        </div>
+                        <div class="part-txt">
+                            <h3>Investigate and understand other metrics on complex network.</h3>
+                            <p>Such as closeness centrality, katz centrality, clique and so on</p>
+                            <a href="#" class="my-btn"><i class="far fa-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-sm-6">
+                    <div class="item">
+                        <div class="part-img">
+                            <img src="assets/images/project-2.jpg" alt="image-1">
+                        </div>
+                        <div class="part-txt">
+                            <h3>Do some link predictions to conquer the weakness of current network.</h3>
+                            <p>Need to balance the robustness increase as well as the cost of adding a new airline.</p>
+                            <a href="#" class="my-btn"><i class="far fa-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-sm-6">
+                    <div class="item">
+                        <div class="part-img">
+                            <img src="assets/images/project-3.jpg" alt="image-1">
+                        </div>
+                        <div class="part-txt">
+                            <h3>Compare the 1997 airline nework with the current one.</h3>
+                            <p>Find the differences and do thorough analysis to see the motive and mechanism.</p>
+                            <a href="#" class="my-btn"><i class="far fa-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="part-btn">
+                <a href="#" class="my-btn">see all projects</a> 
+            </div>-->
+        </div>
+    </div>
+    <!-- portfolio end -->
+
+    <!-- testimonial begin -->
+    <div class="testimonial">
+        <div class="container">
+            <div class="heading">
+                <p>testimonial</p>
+                <h2>What clients say about us</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-7">
+                    <div class="txt">
+                        <div class="comment">
+                            <div class="part-img">
+                                <img src="assets/images/client-1.jpg" alt="img-1">
+                            </div>
+                            <div class="part-txt">
+                                <h3>shaikh darda</h3>
+                                <span>customer</span>
+                                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fugit consequatur perferendis quod! Voluptas, necessitatibus expedita. Deleniti repudiandae facilis numquam totam."</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="part-img">
+                                <img src="assets/images/client-2.jpg" alt="img-2">
+                            </div>
+                            <div class="part-txt">
+                                <h3>darda shaikh</h3>
+                                <span>customer</span>
+                                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fugit consequatur perferendis quod! Voluptas, necessitatibus expedita. Deleniti repudiandae facilis numquam totam."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonial end -->
+
+    <!-- awards begin -->
+    <div class="awards">
+        <div class="container">
+            <div class="heading">
+                <p>awards</p>
+                <h2>Our Achievements</h2>
+            </div>
+            <div class="award">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="part-img">
+                            <img src="assets/images/01.png" alt="img-1">
+                            <h3>Best partner of the<br>year (20xx)</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="part-img">
+                            <img src="assets/images/02.png" alt="img-2">
+                            <h3>Best partner of the<br>year (20xx)</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="part-img">
+                            <img src="assets/images/03.png" alt="img-3">
+                            <h3>Best partner of the<br>year (20xx)</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="part-img">
+                            <img src="assets/images/04.png" alt="img-4">
+                            <h3>Best partner of the<br>year (20xx)</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- awards end -->
+
+    <!-- team begin -->
+    <div class="team" id="team">
+        <div class="container">
+            <div class="heading">
+                <p>our team</p>
+                <h2>meet our dedicated team</h2>
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                    <div class="member">
+                        <div class="part-img">
+                            <img src="assets/images/team-1.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p>ceo</p>
+                            <h3>shaikh darda</h3>
+                        </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                    <div class="member">
+                        <div class="part-img">
+                            <img src="assets/images/team-2.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p>founder</p>
+                            <h3>darda shaikh</h3>
+                        </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                    <div class="member">
+                        <div class="part-img">
+                            <img src="assets/images/team-1.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p>developer</p>
+                            <h3>shaikh darda</h3>
+                        </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                    <div class="member">
+                        <div class="part-img">
+                            <img src="assets/images/team-2.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p>designer</p>
+                            <h3>darda shaikh</h3>
+                        </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- team end -->
+
+    <!-- blog begin -->
+    <div class="blog" id="blog">
+        <div class="container">
+            <div class="heading">
+                <p>blog</p>
+                <h2>our latest blog</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="blog-d">
+                        <div class="part-img">
+                            <img src="assets/images/blog-1.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p class="admin"><i class="fas fa-user-edit"></i> tamim ubaida</p>
+                            <h3>Data is the new science. big data holds the answers.</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil nulla temporibus ab maxime expedita impedit, praesentium, sed esse odit est perferendis consectetur.</p>
+                            <a href="#">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="blog-d">
+                        <div class="part-img">
+                            <img src="assets/images/blog-2.jpg" alt="img-2">
+                        </div>
+                        <div class="part-txt">
+                            <p class="admin"><i class="fas fa-user-edit"></i> shaikh darda</p>
+                            <h3>Data is the new science. big data holds the answers.</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil nulla temporibus ab maxime expedita impedit, praesentium, sed esse odit est perferendis consectetur.</p>
+                            <a href="#">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="blog-d">
+                        <div class="part-img">
+                            <img src="assets/images/blog-1.jpg" alt="img-1">
+                        </div>
+                        <div class="part-txt">
+                            <p class="admin"><i class="fas fa-user-edit"></i> tamim ubaida</p>
+                            <h3>Data is the new science. big data holds the answers.</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil nulla temporibus ab maxime expedita impedit, praesentium, sed esse odit est perferendis consectetur.</p>
+                            <a href="#">read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- blog end -->
+
+    <!-- contact begin -->
+    <div class="contact" id="contact">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-lg-3">
+                    <div class="part-img">
+                        <img src="assets/images/contact.png" alt="img-1">
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8">
+                    
+            <div class="heading">
+                <p>contact</p>
+                <h2>get in touch with us</h2>
+            </div>
+                    <form>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <input type="text" name="name" placeholder="enter your first name" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <input type="text" name="name" placeholder="enter your last name" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <input type="email" id="email" placeholder="enter your email address" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <input type="text" placeholder="enter your subject" required>
+                            </div>
+                            <div class="col-xl-12 col-lg-12">
+                                <textarea placeholder="enter your message" required></textarea>
+                            </div>
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="part-btn text-center">
+                                    <button class="my-btn">submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact end -->
+
+    <!-- footer begin -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-3 col-md-6">
+                    <div class="f-about">
+                        <img src="assets/images/logo1.png" alt="LOGO" />
+                        <p>Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Quis Nobis Quia Modi Accusamus Laborum.</p>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-6">
+                    <div class="links">
+                        <h3>Quick Link</h3>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Tickets</a></li>
+                            <li><a href="#">Venue</a></li>
+                            <li><a href="#">Faq</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="links">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Careers At Va</a></li>
+                            <li><a href="#">Homeless Veterans</a></li>
+                            <li><a href="#">Minority Veterans</a></li>
+                            <li><a href="#">Pension</a></li>
+                            <li><a href="#">Plain Language</a></li>
+                            <li><a href="#">Employment Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="location">
+                        <h3>Contact Us</h3>
+                        <p>512, Main Road St, Ma 176 Charls Town</p>
+                        <a href="#">Info@Example.Com</a>
+                        <p>+101 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="row justify-content-between">
+                    <div class="col-xl-5 col-lg-5 col-md-6">
+                        <div class="part-txt">
+                            <p>&copy; 2019 <a href="#">sutent</a> All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-5">
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+
+    <!-- jquery -->
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <!-- sclick slider -->
+    <script src="assets/js/slick.min.js"></script>
+    <!-- bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- custom javascript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
