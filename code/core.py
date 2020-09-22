@@ -70,6 +70,8 @@ def draw_kcores(highest_k, k_cores):
     for j in x:
         y.append(len(k_cores[j]))
     y = np.array(y)
+    print(f'x: {list(x)}')
+    print(f'y: {list(y)}')
     plt.title("Coreness Distribution")
     plt.xlabel("Coreness")
     plt.ylabel("Node Number")
@@ -88,5 +90,5 @@ if __name__ == "__main__":
             graph = addEdge(graph, nodes[0], nodes[1])
     highest_k, k_cores = find_kcores(graph)
     draw_kcores(highest_k, k_cores)
-    print(highest_k)
-    print((k_cores[26]))
+    # print(highest_k)
+    # print((k_cores[26]))

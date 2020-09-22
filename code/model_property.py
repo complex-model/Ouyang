@@ -1,5 +1,7 @@
 import math
 import numpy as np
+from collections import Counter
+from scipy.optimize import curve_fit
 from matplotlib import pyplot as plt
 import os
 
@@ -134,7 +136,12 @@ def fitting_func(x, r, b):
 
 def draw_degree_with_curve_fitting(inp):
     # 模拟power_law定律
-    new_inp = [element for element in inp if element >= 1]
+    new_inp = []
+    for ele in inp:
+        if ele >= 1:
+            new_inp.append(ele)
+        else:
+            new_inp.append(1)
     y = np.array(new_inp)
     y = np.log(y)
     x = np.array([i for i in range(1, len(new_inp)+1)])
@@ -143,8 +150,16 @@ def draw_degree_with_curve_fitting(inp):
     plt.xlabel("Logged-Degree")
     plt.ylabel("Logged-Nodes Of This Degree")
     plt.scatter(x, y)
+    result = []
+    for x_x, y_y in zip(x, y):
+        result.append([x_x, y_y])
+    print(f'result: {result}')
     popt, pcov = curve_fit(fitting_func, x, y, maxfev=1000000)
     yy = [fitting_func(i, popt[0], popt[1]) for i in x]
+    # result = []
+    # for x_x, y_y in zip(x, yy):
+    #     result.append([x_x, y_y])
+    # print(f'result: {result}')
     plt.plot(x, yy, 'r-', label='fit')
     print('coeff r= ', popt[0], ' coeff b= ', popt[1])
     plt.show()
@@ -220,7 +235,15 @@ if __name__ == '__main__':
     adjacent, freq, freq_normalized = read_file(filename)
     #np.save('adjacent_matrix_without_distance.npy',adjacent)
     #np.save('freq_matrix_with_normalization.npy',freq)
-    diameter, avg_path_length = get_avg_path_length(adjacent)
-    cluster_result = clustering_coeff(adjacent)
+    # diameter, avg_path_length = get_avg_path_length(adjacent)
+    # cluster_result = clustering_coeff(adjacent)
     degree_result = get_degree(adjacent)
-    draw_degree(degree_result[3], degree_result[1])
+    max_degree = max(degree_result[3])
+    degree_distribution = Counter(degree_result[3])
+    degree_dict = {}
+    for i in range(1, max_degree+1):
+        num = degree_distribution.get(i)
+        degree_dict[i] = num if num is not None else 0
+    print(degree_dict.values())
+    # draw_degree(degree_result[3], degree_result[1])
+    draw_degree_with_curve_fitting(degree_result[4])

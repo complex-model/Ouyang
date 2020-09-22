@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import model_property
 import numpy as np
 import random
+import json
 import os
 
 
@@ -82,6 +83,13 @@ def get_max_degree_node(matrix, top=1):
     return [index for index, value in node_degree[:top]]
 
 
+def save_as_json(information, filename):
+    ''' 保存成 json 文件 '''
+    json_str = json.dumps(information, ensure_ascii=False, indent=4)
+    with open(os.path.join('../results', filename), 'w') as f:
+        f.write(json_str)
+
+
 def draw(x, y, title, label, filename, color='blue'):
     ''' 可视化 '''
     assert len(label) == 2
@@ -98,10 +106,31 @@ if __name__ == '__main__':
     filename = os.path.join(root, 'inf-USAir97.mtx')
     adjacent, freq, freq_normalized = model_property.read_file(filename)
     # 随机删除
-    # removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=True, node_skip=10)
-    # draw(removed_num, subgraph_size, 'Random', ('node removed', 'Size of the largest subgraph'), '../results/Random_attack_Size.jpg')
-    # draw(removed_num, subgraph_length, 'Random', ('node removed', 'Average path length'), '../results/Random_attack_Length.jpg')
+    removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=True, node_skip=1)
+    draw(removed_num, subgraph_size, 'Random', ('node removed', 'Size of the largest subgraph'), '../results/Random_attack_Size.jpg')
+    draw(removed_num, subgraph_length, 'Random', ('node removed', 'Average path length'), '../results/Random_attack_Length.jpg')
+
+    print(removed_num)
+    print(subgraph_size)
+    print(subgraph_length)
+    save_as_json({
+        'removed_num': removed_num,
+        'subgraph_size': subgraph_size,
+        'subgraph_length': subgraph_length
+    }, 'Random-Attack.json')
+
+
     # 选取度大的点删除
-    removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=False, node_skip=10)
+    removed_num, subgraph_size, subgraph_length = attack(adjacent, random_attack=False, node_skip=1)
     draw(removed_num, subgraph_size, 'Intentional', ('node removed', 'Size of the largest subgraph'), '../results/Intentional_attack_Size.jpg')
     draw(removed_num, subgraph_length, 'Intentional', ('node removed', 'Average path length'), '../results/Intentional_attack_Length.jpg')
+
+    print(removed_num)
+    print(subgraph_size)
+    print(subgraph_length)
+    save_as_json({
+        'removed_num': removed_num,
+        'subgraph_size': subgraph_size,
+        'subgraph_length': subgraph_length
+    }, 'Intentional-Attack.json')
+
